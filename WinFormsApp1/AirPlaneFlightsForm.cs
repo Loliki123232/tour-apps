@@ -22,30 +22,18 @@ namespace WinFormsApp1
         public AirPlaneFlightsForm()
         {
             InitializeComponent();
-          
+
 
         }
-        private void LoadAirPlaneFlights()
-        {
-
-           
-        }
-        private void AirPlaneFlightsComboBox(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-       
-
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void AirPlaneFlightsForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
-   
+
 }
