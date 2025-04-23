@@ -33,6 +33,7 @@
             dateTimePicker1 = new DateTimePicker();
             button1 = new Button();
             button2 = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // City1textBox1
@@ -41,6 +42,7 @@
             City1textBox1.Name = "City1textBox1";
             City1textBox1.Size = new Size(198, 23);
             City1textBox1.TabIndex = 0;
+            City1textBox1.TextChanged += City1textBox1_TextChanged;
             // 
             // City1textBox2
             // 
@@ -48,10 +50,11 @@
             City1textBox2.Name = "City1textBox2";
             City1textBox2.Size = new Size(219, 23);
             City1textBox2.TabIndex = 1;
+            City1textBox2.TextChanged += City1textBox2_TextChanged;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(466, 26);
+            dateTimePicker1.Location = new Point(17, 83);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(200, 23);
             dateTimePicker1.TabIndex = 2;
@@ -75,11 +78,21 @@
             button2.Text = "button2";
             button2.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(478, 30);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 5;
+            label1.Text = "label1";
+            // 
             // AirPlaneFlightsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 338);
+            Controls.Add(label1);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(dateTimePicker1);
@@ -100,5 +113,6 @@
         private DateTimePicker dateTimePicker1;
         private Button button1;
         private Button button2;
+        private Label label1;
     }
 }

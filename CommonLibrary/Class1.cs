@@ -22,7 +22,7 @@ namespace CommonLibrary
         // Убедитесь, что конструктор недоступен для внешних классов
         private DatabaseConnection()
         {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Кирилл\\source\\repos\\WinFormsApp1\\WinFormsApp1\\Database1.mdf;Integrated Security=True"; // Замените на вашу строку подключения
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\source\\repos\\ConsoleApp2\\ConsoleApp2\\Database1.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True"; // Замените на вашу строку подключения
             _connection = new SqlConnection(connectionString);
         }
 

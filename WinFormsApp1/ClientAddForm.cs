@@ -73,6 +73,7 @@ namespace WinFormsApp1
          ValidUntilTextBox.Text,       // ValidUntil
          ccvcode                // CCVCod (уже проверено)
      );
+            dbConnection.CloseConnection();
             ChoosingеTransportForm choosingеTransportForm = new ChoosingеTransportForm();
             choosingеTransportForm.ShowDialog();
         }

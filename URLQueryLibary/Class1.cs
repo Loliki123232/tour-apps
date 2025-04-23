@@ -7,8 +7,9 @@ namespace URLQueryLibary
 {
     public class UrlQiery
     {
-        public string City1 { get; set; }
-        public string City2 { get; set; }
+        string City1 { get; set; }
+        string City2 { get; set; }
+        public double distanceBetweenCities { get; private set; }
 
         public UrlQiery(string city1, string city2)
         {
@@ -18,7 +19,7 @@ namespace URLQueryLibary
 
         public async Task<double> GetDistanceAsync()
         {
-            double distanceBetweenCities = 0;
+            
             try
             {
         

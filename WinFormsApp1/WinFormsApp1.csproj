@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CommonLibrary\DataBaseLibary.csproj" />
+    <ProjectReference Include="..\URLQueryLibary\URLQueryLibary.csproj" />
   </ItemGroup>
 
 </Project>
