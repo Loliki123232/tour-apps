@@ -28,59 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            comboBoxFlights = new ComboBox();
-            labelPrice = new Label();
-            labelDate = new Label();
-            checkBox1 = new CheckBox();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            dateTimePicker1 = new DateTimePicker();
             SuspendLayout();
             // 
-            // comboBoxFlights
+            // textBox1
             // 
-            comboBoxFlights.FormattingEnabled = true;
-            comboBoxFlights.Location = new Point(12, 33);
-            comboBoxFlights.Name = "comboBoxFlights";
-            comboBoxFlights.Size = new Size(269, 28);
-            comboBoxFlights.TabIndex = 0;
-            comboBoxFlights.SelectedIndexChanged += AirPlaneFlightsComboBox;
+            textBox1.Location = new Point(17, 26);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(198, 23);
+            textBox1.TabIndex = 0;
             // 
-            // labelPrice
+            // textBox2
             // 
-            labelPrice.AutoSize = true;
-            labelPrice.Location = new Point(339, 33);
-            labelPrice.Name = "labelPrice";
-            labelPrice.Size = new Size(50, 20);
-            labelPrice.TabIndex = 1;
-            labelPrice.Text = "label1";
+            textBox2.Location = new Point(231, 26);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(219, 23);
+            textBox2.TabIndex = 1;
             // 
-            // labelDate
+            // dateTimePicker1
             // 
-            labelDate.AutoSize = true;
-            labelDate.Location = new Point(566, 33);
-            labelDate.Name = "labelDate";
-            labelDate.Size = new Size(50, 20);
-            labelDate.TabIndex = 1;
-            labelDate.Text = "label1";
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(12, 83);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(101, 24);
-            checkBox1.TabIndex = 2;
-            checkBox1.Text = "checkBox1";
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += CheckBox1_CheckedChanged;
+            dateTimePicker1.Location = new Point(40, 155);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.TabIndex = 2;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // AirPlaneFlightsForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(checkBox1);
-            Controls.Add(labelDate);
-            Controls.Add(labelPrice);
-            Controls.Add(comboBoxFlights);
+            ClientSize = new Size(700, 338);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "AirPlaneFlightsForm";
             Text = "AirPlaneFlightsForm";
             ResumeLayout(false);
@@ -89,9 +72,8 @@
 
         #endregion
 
-        private ComboBox comboBoxFlights;
-        private Label labelPrice;
-        private Label labelDate;
-        private CheckBox checkBox1;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private DateTimePicker dateTimePicker1;
     }
 }

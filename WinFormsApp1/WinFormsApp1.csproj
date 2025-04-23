@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CommonLibrary\CommonLibrary.csproj" />
+    <ProjectReference Include="..\CommonLibrary\DataBaseLibary.csproj" />
   </ItemGroup>
 
 </Project>
