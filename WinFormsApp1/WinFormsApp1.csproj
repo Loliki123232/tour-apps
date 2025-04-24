@@ -9,12 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
+    <PackageReference Include="System.Text.Json" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CommonLibrary\DataBaseLibary.csproj" />
-    <ProjectReference Include="..\URLQueryLibary\URLQueryLibary.csproj" />
+    <ProjectReference Include="..\URLQueryLibary.1\URLQueryLibary.1.csproj" />
   </ItemGroup>
 
 </Project>

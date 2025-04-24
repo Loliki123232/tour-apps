@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsApp1", "WinFormsApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseLibary", "CommonLibrary\DataBaseLibary.csproj", "{68B2C2D8-AA74-45E2-BF08-4B9D8F41CBD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "URLQueryLibary", "URLQueryLibary\URLQueryLibary.csproj", "{ABE1BF5D-7E81-4CB7-B738-2997C7B273CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "URLQueryLibary.1", "URLQueryLibary.1\URLQueryLibary.1.csproj", "{573B8D93-2E65-4442-99FB-B427BC4B131A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{68B2C2D8-AA74-45E2-BF08-4B9D8F41CBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68B2C2D8-AA74-45E2-BF08-4B9D8F41CBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68B2C2D8-AA74-45E2-BF08-4B9D8F41CBD8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABE1BF5D-7E81-4CB7-B738-2997C7B273CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABE1BF5D-7E81-4CB7-B738-2997C7B273CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABE1BF5D-7E81-4CB7-B738-2997C7B273CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABE1BF5D-7E81-4CB7-B738-2997C7B273CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{573B8D93-2E65-4442-99FB-B427BC4B131A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{573B8D93-2E65-4442-99FB-B427BC4B131A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{573B8D93-2E65-4442-99FB-B427BC4B131A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{573B8D93-2E65-4442-99FB-B427BC4B131A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,20 +19,34 @@ namespace WinFormsApp1
 
         }
 
-        private void AirPlaneFlightsForm_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void City1textBox1_TextChanged(object sender, EventArgs e)
         {
-            city1=City1textBox1.Text;
+            city1 = City1textBox1.Text;
         }
 
         private void City1textBox2_TextChanged(object sender, EventArgs e)
         {
             city2 = City1textBox2.Text;
         }
-    }
 
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(city1) || string.IsNullOrEmpty(city2))
+            {
+                label1.Text = "Введите оба города";
+                return;
+            }
+
+            try
+            {
+                urlQiery urlQuery = new urlQiery(city1, city2);
+                double distance = await urlQuery.GetDistanceAsync();
+                label1.Text = $"{Convert.ToString(distance)}";
+            }
+            catch (Exception ex)
+            {
+                label1.Text = $"Ошибка: {ex.Message}";
+            }
+        }
+    }
 }

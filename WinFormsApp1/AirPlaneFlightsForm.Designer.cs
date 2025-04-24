@@ -96,6 +96,7 @@
             button3.TabIndex = 6;
             button3.Text = "button3";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // AirPlaneFlightsForm
             // 
@@ -112,7 +113,6 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "AirPlaneFlightsForm";
             Text = "AirPlaneFlightsForm";
-            Load += AirPlaneFlightsForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

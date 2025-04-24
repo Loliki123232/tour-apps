@@ -80,7 +80,7 @@ namespace URLQueryLibary
                         .GetProperty("distance")
                         .GetDouble();
 
-                    return distanceMeters / 1000; 
+                    return distanceMeters / 1000;
                 }
             }
         }
