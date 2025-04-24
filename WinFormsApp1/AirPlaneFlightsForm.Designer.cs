@@ -34,6 +34,7 @@
             button1 = new Button();
             button2 = new Button();
             label1 = new Label();
+            button3 = new Button();
             SuspendLayout();
             // 
             // City1textBox1
@@ -71,7 +72,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(353, 283);
+            button2.Location = new Point(515, 283);
             button2.Name = "button2";
             button2.Size = new Size(150, 23);
             button2.TabIndex = 4;
@@ -87,11 +88,21 @@
             label1.TabIndex = 5;
             label1.Text = "label1";
             // 
+            // button3
+            // 
+            button3.Location = new Point(202, 283);
+            button3.Name = "button3";
+            button3.Size = new Size(191, 23);
+            button3.TabIndex = 6;
+            button3.Text = "button3";
+            button3.UseVisualStyleBackColor = true;
+            // 
             // AirPlaneFlightsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 338);
+            Controls.Add(button3);
             Controls.Add(label1);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -114,5 +125,6 @@
         private Button button1;
         private Button button2;
         private Label label1;
+        private Button button3;
     }
 }

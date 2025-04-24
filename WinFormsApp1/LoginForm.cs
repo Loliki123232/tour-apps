@@ -97,7 +97,8 @@ namespace WinFormsApp1
         private void AdminButton_Click(object sender, EventArgs e)
         {
             //LoginAdminForm loginAdminForm = new LoginAdminForm();
-           // loginAdminForm.ShowDialog();
+            // loginAdminForm.ShowDialog();
+            dbConnection.CloseConnection();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace WinFormsApp1
         public AirPlaneFlightsForm()
         {
             InitializeComponent();
-            dbConnection.OpenConnection();
+            
 
         }
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -21,8 +21,7 @@ namespace WinFormsApp1
 
         private void AirPlaneFlightsForm_Load(object sender, EventArgs e)
         {
-            UrlQiery urlQiery = new UrlQiery(city1, city2);
-            label1.Text = urlQiery.distanceBetweenCities.ToString();
+            
         }
 
         private void City1textBox1_TextChanged(object sender, EventArgs e)
