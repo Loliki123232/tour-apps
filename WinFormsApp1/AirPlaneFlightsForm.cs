@@ -41,7 +41,10 @@ namespace WinFormsApp1
             {
                 urlQiery urlQuery = new urlQiery(city1, city2);
                 double distance = await urlQuery.GetDistanceAsync();
-                label1.Text = $"{Convert.ToString(distance)}";
+                if (distance<2000)
+                label1.Text = $"Цена: {Convert.ToString(distance*15)}";
+                else
+                    label1.Text = $"Цена: {Convert.ToString(distance * 3.5)}";
             }
             catch (Exception ex)
             {
