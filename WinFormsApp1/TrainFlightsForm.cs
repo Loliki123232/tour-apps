@@ -82,7 +82,7 @@ namespace WinFormsApp1
                 MessageBox.Show("Пожалуйста, введите В какой город вам нужно и куда.");
                 return;
             }
-            bdManager.SaveSelectedValueBusFlightsToDatabase
+            bdManager.SaveSelectedValueTrainFlightsToDatabase
                 (
                 City1textBox.Text,
                 City2textBox.Text,

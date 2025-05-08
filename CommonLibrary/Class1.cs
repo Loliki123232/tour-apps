@@ -1,14 +1,9 @@
-﻿using Microsoft.Analytics.Interfaces;
-using Microsoft.Analytics.Interfaces.Streaming;
-using Microsoft.Analytics.Types.Sql;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System;
 using System.Linq;
-using System.Text;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.Common;
+using System.Collections.Generic;
+
 namespace CommonLibrary
 {
 
@@ -68,7 +63,7 @@ namespace CommonLibrary
     public class BdManager
     {
         DatabaseConnection dbConnection = DatabaseConnection.Instance;
-
+        
         public void SaveSelectedValueClientToDatabase(string email, string password)
         {
             email = email.Trim();
@@ -200,6 +195,33 @@ namespace CommonLibrary
                     dbConnection.Connection.Close();
             }
         }
+        public void SaveBooking(HotelBooking booking)
+        {
+            try
+            {
+                if (dbConnection.Connection.State != ConnectionState.Open)
+                    dbConnection.Connection.Open();
+
+                using (SqlCommand command = new SqlCommand(@"INSERT INTO HotelBookings 
+                        (Stars, TotalPrice, Meals, Amenities, Excursions) 
+                        VALUES 
+                        (@Stars, @TotalPrice, @Meals, @Amenities, @Excursions)", dbConnection.Connection))
+                {
+                    command.Parameters.AddWithValue("@Stars", booking.Stars);
+                    command.Parameters.AddWithValue("@TotalPrice", booking.PricePerNight);
+                    command.Parameters.AddWithValue("@Meals", booking.Meals.Count > 0 ? string.Join(", ", booking.Meals) : "Нет");
+                    command.Parameters.AddWithValue("@Amenities", booking.Amenities.Count > 0 ? string.Join(", ", booking.Amenities) : "Нет");
+                    command.Parameters.AddWithValue("@Excursions", booking.Excursions.Count > 0 ? string.Join(", ", booking.Excursions) : "Нет");
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                if (dbConnection.Connection.State == ConnectionState.Open)
+                    dbConnection.Connection.Close();
+            }
+        }
     }
 
         public class Authenticator
@@ -222,4 +244,71 @@ namespace CommonLibrary
             }
 
         }
+    public class HotelBooking
+    {
+        public int Stars { get; set; }
+        public decimal PricePerNight { get; set; }
+        public List<string> Meals { get; set; } = new List<string>();
+        public List<string> Excursions { get; set; } = new List<string>();
+        public List<string> Amenities { get; set; } = new List<string>();
+
+        public override string ToString()
+        {
+            return $"Отель {Stars}*\n" +
+                   $"Итоговая цена за ночь: {PricePerNight} руб.\n" +
+                   $"Питание: {(Meals.Count > 0 ? string.Join(", ", Meals) : "Нет")}\n" +
+                   $"Удобства: {(Amenities.Count > 0 ? string.Join(", ", Amenities) : "Нет")}\n" +
+                   $"Экскурсии: {(Excursions.Count > 0 ? string.Join(", ", Excursions) : "Нет")}";
+        }
+    }
+
+    public interface IHotelBookingBuilder
+    {
+        IHotelBookingBuilder SetStars(int stars);
+        IHotelBookingBuilder SetPrice(decimal price);
+        IHotelBookingBuilder AddMeal(string meal);
+        IHotelBookingBuilder AddExcursion(string excursion);
+        IHotelBookingBuilder AddAmenity(string amenity);
+        HotelBooking Build();
+    }
+
+    public class HotelBookingBuilder : IHotelBookingBuilder
+    {
+        private HotelBooking _booking = new HotelBooking();
+
+        public IHotelBookingBuilder SetStars(int stars)
+        {
+            _booking.Stars = stars < 3 ? 3 : (stars > 5 ? 5 : stars);
+            return this;
+        }
+
+        public IHotelBookingBuilder SetPrice(decimal price)
+        {
+            _booking.PricePerNight = price;
+            return this;
+        }
+
+        public IHotelBookingBuilder AddMeal(string meal)
+        {
+            if (!string.IsNullOrEmpty(meal))
+                _booking.Meals.Add(meal);
+            return this;
+        }
+
+        public IHotelBookingBuilder AddExcursion(string excursion)
+        {
+            if (!string.IsNullOrEmpty(excursion))
+                _booking.Excursions.Add(excursion);
+            return this;
+        }
+
+        public IHotelBookingBuilder AddAmenity(string amenity)
+        {
+            if (!string.IsNullOrEmpty(amenity))
+                _booking.Amenities.Add(amenity);
+            return this;
+        }
+
+        public HotelBooking Build() => _booking;
+    }
 }
