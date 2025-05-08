@@ -53,6 +53,7 @@
             TrainButton.TabIndex = 0;
             TrainButton.Text = "Поезд";
             TrainButton.UseVisualStyleBackColor = true;
+            TrainButton.Click += TrainButton_Click;
             // 
             // BusButton
             // 
@@ -62,6 +63,7 @@
             BusButton.TabIndex = 0;
             BusButton.Text = "Автобус";
             BusButton.UseVisualStyleBackColor = true;
+            BusButton.Click += BusButton_Click;
             // 
             // ShipButton
             // 
@@ -71,6 +73,7 @@
             ShipButton.TabIndex = 0;
             ShipButton.Text = "Корабль";
             ShipButton.UseVisualStyleBackColor = true;
+            ShipButton.Click += ShipButton_Click;
             // 
             // ExitButton
             // 

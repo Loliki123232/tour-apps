@@ -22,7 +22,7 @@ namespace CommonLibrary
         // Убедитесь, что конструктор недоступен для внешних классов
         private DatabaseConnection()
         {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\source\\repos\\tour-apps\\WinFormsApp1\\Database1.mdf;Integrated Security=True"; // Замените на вашу строку подключения
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Кирилл\\Source\\Repos\\tour-apps\\WinFormsApp1\\Database1.mdf;Integrated Security=True"; // Замените на вашу строку подключения
             _connection = new SqlConnection(connectionString);
         }
 
@@ -81,17 +81,7 @@ namespace CommonLibrary
                 command.ExecuteNonQuery();
             }
         }
-        public void SaveSelectedValueAdminToDatabase(string email, string password)
-        {
-            email = email.Trim();
-            password = password.Trim();
-            using (SqlCommand command = new SqlCommand("INSERT INTO LoginAdminBD(Email, Password) VALUES (@Email, @Password)", dbConnection.Connection))
-            {
-                command.Parameters.AddWithValue("@Email", email);
-                command.Parameters.AddWithValue("@Password", password);
-                command.ExecuteNonQuery();
-            }
-        }
+
         public void SaveSelectedValueClientToDatabase(string firstname, string lastname, string middlename, int numberphone, string numbercard, string validuntil, int ccvcod)
         {
             using (SqlCommand command = new SqlCommand("INSERT INTO Clients(FirstName, LastName,MiddleName,Number,NumberCard,ValidUntil,CCVCod) VALUES (@FirstName, @LastName,@MiddleName,@Number,@NumberCard,@ValidUntil,@CCVCod)", dbConnection.Connection))
@@ -106,39 +96,130 @@ namespace CommonLibrary
                 command.ExecuteNonQuery();
             }
         }
-    }
-    public class Authenticator
-    {
-        DatabaseConnection dbConnection = DatabaseConnection.Instance;
-        public bool AreCredentialsValidClient(string email, string password)
+        public void SaveSelectedValueAirPlaneFlightsToDatabase(string fromCity, string toCity, decimal price, DateTime departureTime)
         {
-            email = email.Trim();
-            password = password.Trim();
-            string query = "SELECT COUNT(*) FROM LoginClientBD WHERE Email = @Email AND Password = @Password";
-
-            using (SqlCommand command = new SqlCommand(query, dbConnection.Connection))
+            try
             {
-                command.Parameters.AddWithValue("@Email", email);
-                command.Parameters.AddWithValue("@Password", password);
+                if (dbConnection.Connection.State != ConnectionState.Open)
+                    dbConnection.Connection.Open();
 
-                int count = (int)command.ExecuteScalar();
-                return count > 0;
+                using (SqlCommand command = new SqlCommand(
+                    "INSERT INTO AirPlaneFlights(FromCity, ToCity, Price, DepartureTime) " +
+                    "VALUES (@FromCity, @ToCity, @Price, @DepartureTime)",
+                    dbConnection.Connection))
+                {
+                    command.Parameters.Add("@FromCity", SqlDbType.NVarChar).Value = fromCity ?? (object)DBNull.Value;
+                    command.Parameters.Add("@ToCity", SqlDbType.NVarChar).Value = toCity ?? (object)DBNull.Value;
+                    command.Parameters.Add("@Price", SqlDbType.Decimal).Value = price;
+                    command.Parameters.Add("@DepartureTime", SqlDbType.DateTime2).Value = departureTime;
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                if (dbConnection.Connection.State == ConnectionState.Open)
+                    dbConnection.Connection.Close();
             }
         }
-        public bool AreCredentialsValidAdmin(string email, string password)
+        public void SaveSelectedValueShipFlightsToDatabase(string fromCity, string toCity, decimal price, DateTime departureTime)
         {
-            email = email.Trim();
-            password = password.Trim();
-            string query = "SELECT COUNT(*) FROM LoginAdminBD WHERE Email = @Email AND Password = @Password";
-
-            using (SqlCommand command = new SqlCommand(query, dbConnection.Connection))
+            try
             {
-                command.Parameters.AddWithValue("@Email", email);
-                command.Parameters.AddWithValue("@Password", password);
+                if (dbConnection.Connection.State != ConnectionState.Open)
+                    dbConnection.Connection.Open();
 
-                int count = (int)command.ExecuteScalar();
-                return count > 0;
+                using (SqlCommand command = new SqlCommand(
+                    "INSERT INTO ShipFlights(FromCity, ToCity, Price, DepartureTime) " +
+                    "VALUES (@FromCity, @ToCity, @Price, @DepartureTime)",
+                    dbConnection.Connection))
+                {
+                    command.Parameters.Add("@FromCity", SqlDbType.NVarChar).Value = fromCity ?? (object)DBNull.Value;
+                    command.Parameters.Add("@ToCity", SqlDbType.NVarChar).Value = toCity ?? (object)DBNull.Value;
+                    command.Parameters.Add("@Price", SqlDbType.Decimal).Value = price;
+                    command.Parameters.Add("@DepartureTime", SqlDbType.DateTime2).Value = departureTime;
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                if (dbConnection.Connection.State == ConnectionState.Open)
+                    dbConnection.Connection.Close();
+            }
+        }
+        public void SaveSelectedValueBusFlightsToDatabase(string fromCity, string toCity, decimal price, DateTime departureTime)
+        {
+            try
+            {
+                if (dbConnection.Connection.State != ConnectionState.Open)
+                    dbConnection.Connection.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "INSERT INTO BusFlights(FromCity, ToCity, Price, DepartureTime) " +
+                    "VALUES (@FromCity, @ToCity, @Price, @DepartureTime)",
+                    dbConnection.Connection))
+                {
+                    command.Parameters.Add("@FromCity", SqlDbType.NVarChar).Value = fromCity ?? (object)DBNull.Value;
+                    command.Parameters.Add("@ToCity", SqlDbType.NVarChar).Value = toCity ?? (object)DBNull.Value;
+                    command.Parameters.Add("@Price", SqlDbType.Decimal).Value = price;
+                    command.Parameters.Add("@DepartureTime", SqlDbType.DateTime2).Value = departureTime;
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                if (dbConnection.Connection.State == ConnectionState.Open)
+                    dbConnection.Connection.Close();
+            }
+        }
+        public void SaveSelectedValueTrainFlightsToDatabase(string fromCity, string toCity, decimal price, DateTime departureTime)
+        {
+            try
+            {
+                if (dbConnection.Connection.State != ConnectionState.Open)
+                    dbConnection.Connection.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "INSERT INTO TrainFlights(FromCity, ToCity, Price, DepartureTime) " +
+                    "VALUES (@FromCity, @ToCity, @Price, @DepartureTime)",
+                    dbConnection.Connection))
+                {
+                    command.Parameters.Add("@FromCity", SqlDbType.NVarChar).Value = fromCity ?? (object)DBNull.Value;
+                    command.Parameters.Add("@ToCity", SqlDbType.NVarChar).Value = toCity ?? (object)DBNull.Value;
+                    command.Parameters.Add("@Price", SqlDbType.Decimal).Value = price;
+                    command.Parameters.Add("@DepartureTime", SqlDbType.DateTime2).Value = departureTime;
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                if (dbConnection.Connection.State == ConnectionState.Open)
+                    dbConnection.Connection.Close();
             }
         }
     }
+
+        public class Authenticator
+        {
+            DatabaseConnection dbConnection = DatabaseConnection.Instance;
+            public bool AreCredentialsValidClient(string email, string password)
+            {
+                email = email.Trim();
+                password = password.Trim();
+                string query = "SELECT COUNT(*) FROM LoginClientBD WHERE Email = @Email AND Password = @Password";
+
+                using (SqlCommand command = new SqlCommand(query, dbConnection.Connection))
+                {
+                    command.Parameters.AddWithValue("@Email", email);
+                    command.Parameters.AddWithValue("@Password", password);
+
+                    int count = (int)command.ExecuteScalar();
+                    return count > 0;
+                }
+            }
+
+        }
 }

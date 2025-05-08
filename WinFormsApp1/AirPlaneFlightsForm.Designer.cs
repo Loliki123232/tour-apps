@@ -29,88 +29,128 @@
         private void InitializeComponent()
         {
             City1textBox1 = new TextBox();
-            City1textBox2 = new TextBox();
+            City2textBox2 = new TextBox();
             dateTimePicker1 = new DateTimePicker();
-            button1 = new Button();
-            button2 = new Button();
+            btnExit = new Button();
+            btnSave = new Button();
             label1 = new Label();
-            button3 = new Button();
+            btnCheck = new Button();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // City1textBox1
             // 
-            City1textBox1.Location = new Point(17, 26);
+            City1textBox1.Location = new Point(15, 40);
+            City1textBox1.Margin = new Padding(3, 4, 3, 4);
             City1textBox1.Name = "City1textBox1";
-            City1textBox1.Size = new Size(198, 23);
+            City1textBox1.Size = new Size(226, 27);
             City1textBox1.TabIndex = 0;
             City1textBox1.TextChanged += City1textBox1_TextChanged;
             // 
-            // City1textBox2
+            // City2textBox2
             // 
-            City1textBox2.Location = new Point(231, 26);
-            City1textBox2.Name = "City1textBox2";
-            City1textBox2.Size = new Size(219, 23);
-            City1textBox2.TabIndex = 1;
-            City1textBox2.TextChanged += City1textBox2_TextChanged;
+            City2textBox2.Location = new Point(264, 40);
+            City2textBox2.Margin = new Padding(3, 4, 3, 4);
+            City2textBox2.Name = "City2textBox2";
+            City2textBox2.Size = new Size(250, 27);
+            City2textBox2.TabIndex = 1;
+            City2textBox2.TextChanged += City1textBox2_TextChanged;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(17, 83);
+            dateTimePicker1.Location = new Point(15, 95);
+            dateTimePicker1.Margin = new Padding(3, 4, 3, 4);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.Size = new Size(228, 27);
             dateTimePicker1.TabIndex = 2;
             dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
-            // button1
+            // btnExit
             // 
-            button1.Location = new Point(13, 283);
-            button1.Name = "button1";
-            button1.Size = new Size(144, 23);
-            button1.TabIndex = 3;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnExit.Location = new Point(15, 377);
+            btnExit.Margin = new Padding(3, 4, 3, 4);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(165, 31);
+            btnExit.TabIndex = 3;
+            btnExit.Text = "Назад";
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
             // 
-            // button2
+            // btnSave
             // 
-            button2.Location = new Point(515, 283);
-            button2.Name = "button2";
-            button2.Size = new Size(150, 23);
-            button2.TabIndex = 4;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            btnSave.Location = new Point(546, 377);
+            btnSave.Margin = new Padding(3, 4, 3, 4);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(171, 31);
+            btnSave.TabIndex = 4;
+            btnSave.Text = "Сохранить";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(478, 30);
+            label1.Location = new Point(546, 40);
             label1.Name = "label1";
-            label1.Size = new Size(38, 15);
+            label1.Size = new Size(50, 20);
             label1.TabIndex = 5;
             label1.Text = "label1";
             // 
-            // button3
+            // btnCheck
             // 
-            button3.Location = new Point(202, 283);
-            button3.Name = "button3";
-            button3.Size = new Size(191, 23);
-            button3.TabIndex = 6;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            btnCheck.Location = new Point(249, 377);
+            btnCheck.Margin = new Padding(3, 4, 3, 4);
+            btnCheck.Name = "btnCheck";
+            btnCheck.Size = new Size(218, 31);
+            btnCheck.TabIndex = 6;
+            btnCheck.Text = "Просмотр цены";
+            btnCheck.UseVisualStyleBackColor = true;
+            btnCheck.Click += btnCheck_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(19, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(60, 20);
+            label2.TabIndex = 7;
+            label2.Text = "От куда";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(264, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(41, 20);
+            label3.TabIndex = 7;
+            label3.Text = "Куда";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(15, 71);
+            label4.Name = "label4";
+            label4.Size = new Size(41, 20);
+            label4.TabIndex = 7;
+            label4.Text = "Дата";
             // 
             // AirPlaneFlightsForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
-            Controls.Add(button3);
+            ClientSize = new Size(800, 451);
+            Controls.Add(label3);
+            Controls.Add(label4);
+            Controls.Add(label2);
+            Controls.Add(btnCheck);
             Controls.Add(label1);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnSave);
+            Controls.Add(btnExit);
             Controls.Add(dateTimePicker1);
-            Controls.Add(City1textBox2);
+            Controls.Add(City2textBox2);
             Controls.Add(City1textBox1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "AirPlaneFlightsForm";
             Text = "AirPlaneFlightsForm";
             ResumeLayout(false);
@@ -120,11 +160,14 @@
         #endregion
 
         private TextBox City1textBox1;
-        private TextBox City1textBox2;
+        private TextBox City2textBox2;
         private DateTimePicker dateTimePicker1;
-        private Button button1;
-        private Button button2;
+        private Button btnExit;
+        private Button btnSave;
         private Label label1;
-        private Button button3;
+        private Button btnCheck;
+        private Label label2;
+        private Label label3;
+        private Label label4;
     }
 }

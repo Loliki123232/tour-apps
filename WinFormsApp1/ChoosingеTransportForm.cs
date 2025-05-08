@@ -27,5 +27,23 @@ namespace WinFormsApp1
             AirPlaneFlightsForm airPlaneFlightsForm = new AirPlaneFlightsForm();
             airPlaneFlightsForm.ShowDialog();
         }
+
+        private void TrainButton_Click(object sender, EventArgs e)
+        {
+            TrainFlightsForm trainFlightsForm = new TrainFlightsForm();
+            trainFlightsForm.ShowDialog();
+        }
+
+        private void BusButton_Click(object sender, EventArgs e)
+        {
+            BusFlightsForm busFlightsForm = new BusFlightsForm();
+            busFlightsForm.ShowDialog();
+        }
+
+        private void ShipButton_Click(object sender, EventArgs e)
+        {
+            ShipFlightsForm shipFlightsForm = new ShipFlightsForm();
+            shipFlightsForm.ShowDialog();
+        }
     }
 }
