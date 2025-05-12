@@ -92,8 +92,15 @@ namespace WinFormsApp1
                 price,
                 dateTimePicker1.Value
                 );
-            ChoisHotelForm choisHotelForm = new ChoisHotelForm();
-            choisHotelForm.ShowDialog();
+
+            ChoisHotelForm hotelForm = new ChoisHotelForm(
+         "Bus",       // Тип транспорта
+         City1textBox.Text,    // Город отправления
+         City2textBox.Text,      // Город назначения
+         price,       // Стоимость
+         dateTimePicker1.Value // Дата отправления
+     );
+            hotelForm.ShowDialog();
             dbConnection.CloseConnection();
         }
     }

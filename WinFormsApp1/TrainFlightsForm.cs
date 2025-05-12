@@ -20,11 +20,13 @@ namespace WinFormsApp1
         string city1;
         string city2;
         int price;
+        
         public TrainFlightsForm()
         {
             InitializeComponent();
             dateTimePicker1.MinDate = DateTime.Today;
             dbConnection.OpenConnection();
+            
         }
         private void dateTimePicker1_ValueChanged_1(object sender, EventArgs e)
         {
@@ -89,8 +91,15 @@ namespace WinFormsApp1
                 price,
                 dateTimePicker1.Value
                 );
-            ChoisHotelForm choisHotelForm = new ChoisHotelForm();
-            choisHotelForm.ShowDialog();
+
+            ChoisHotelForm hotelForm = new ChoisHotelForm(
+          "Train",       // Тип транспорта
+          City1textBox.Text,    // Город отправления
+          City2textBox.Text,      // Город назначения
+          price,       // Стоимость
+          dateTimePicker1.Value // Дата отправления
+      );
+            hotelForm.ShowDialog();
             dbConnection.CloseConnection();
         }
 

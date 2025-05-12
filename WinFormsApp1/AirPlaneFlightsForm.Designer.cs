@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            City1textBox1 = new TextBox();
-            City2textBox2 = new TextBox();
+            City1textBox = new TextBox();
+            City2textBox = new TextBox();
             dateTimePicker1 = new DateTimePicker();
             btnExit = new Button();
             btnSave = new Button();
@@ -40,23 +40,23 @@
             label4 = new Label();
             SuspendLayout();
             // 
-            // City1textBox1
+            // City1textBox
             // 
-            City1textBox1.Location = new Point(15, 40);
-            City1textBox1.Margin = new Padding(3, 4, 3, 4);
-            City1textBox1.Name = "City1textBox1";
-            City1textBox1.Size = new Size(226, 27);
-            City1textBox1.TabIndex = 0;
-            City1textBox1.TextChanged += City1textBox1_TextChanged;
+            City1textBox.Location = new Point(15, 40);
+            City1textBox.Margin = new Padding(3, 4, 3, 4);
+            City1textBox.Name = "City1textBox";
+            City1textBox.Size = new Size(226, 27);
+            City1textBox.TabIndex = 0;
+            City1textBox.TextChanged += City1textBox1_TextChanged;
             // 
-            // City2textBox2
+            // City2textBox
             // 
-            City2textBox2.Location = new Point(264, 40);
-            City2textBox2.Margin = new Padding(3, 4, 3, 4);
-            City2textBox2.Name = "City2textBox2";
-            City2textBox2.Size = new Size(250, 27);
-            City2textBox2.TabIndex = 1;
-            City2textBox2.TextChanged += City1textBox2_TextChanged;
+            City2textBox.Location = new Point(264, 40);
+            City2textBox.Margin = new Padding(3, 4, 3, 4);
+            City2textBox.Name = "City2textBox";
+            City2textBox.Size = new Size(250, 27);
+            City2textBox.TabIndex = 1;
+            City2textBox.TextChanged += City1textBox2_TextChanged;
             // 
             // dateTimePicker1
             // 
@@ -149,8 +149,8 @@
             Controls.Add(btnSave);
             Controls.Add(btnExit);
             Controls.Add(dateTimePicker1);
-            Controls.Add(City2textBox2);
-            Controls.Add(City1textBox1);
+            Controls.Add(City2textBox);
+            Controls.Add(City1textBox);
             Name = "AirPlaneFlightsForm";
             Text = "AirPlaneFlightsForm";
             ResumeLayout(false);
@@ -159,8 +159,8 @@
 
         #endregion
 
-        private TextBox City1textBox1;
-        private TextBox City2textBox2;
+        private TextBox City1textBox;
+        private TextBox City2textBox;
         private DateTimePicker dateTimePicker1;
         private Button btnExit;
         private Button btnSave;

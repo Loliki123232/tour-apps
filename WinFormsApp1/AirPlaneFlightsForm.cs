@@ -30,12 +30,12 @@ namespace WinFormsApp1
 
         private void City1textBox1_TextChanged(object sender, EventArgs e)
         {
-            city1 = City1textBox1.Text;
+            city1 = City1textBox.Text;
         }
 
         private void City1textBox2_TextChanged(object sender, EventArgs e)
         {
-            city2 = City2textBox2.Text;
+            city2 = City2textBox.Text;
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -71,20 +71,27 @@ namespace WinFormsApp1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(City1textBox1.Text) || string.IsNullOrEmpty(City2textBox2.Text))
+            if (string.IsNullOrEmpty(City1textBox.Text) || string.IsNullOrEmpty(City2textBox.Text))
             {
                 MessageBox.Show("Пожалуйста, введите В какой город вам нужно и куда.");
                 return;
             }
             bdManager.SaveSelectedValueAirPlaneFlightsToDatabase
                 (
-                City1textBox1.Text,
-                City2textBox2.Text,
+                City1textBox.Text,
+                City2textBox.Text,
                 price,
                 dateTimePicker1.Value
                 );
-            ChoisHotelForm choisHotelForm = new ChoisHotelForm();
-            choisHotelForm.ShowDialog();
+
+            ChoisHotelForm hotelForm = new ChoisHotelForm(
+         "Plane",       // Тип транспорта
+         City1textBox.Text,    // Город отправления
+         City2textBox.Text,      // Город назначения
+         price,       // Стоимость
+         dateTimePicker1.Value // Дата отправления
+     );
+            hotelForm.ShowDialog();
             dbConnection.CloseConnection();
         }
     }

@@ -1,0 +1,9 @@
+﻿CREATE TABLE HotelBookings (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Stars INT NOT NULL,
+    TotalPrice DECIMAL(10, 2) NOT NULL,
+    Meals NVARCHAR(MAX) NULL,
+    Amenities NVARCHAR(MAX) NULL,
+    Excursions NVARCHAR(MAX) NULL,
+    BookingDate DATETIME DEFAULT GETDATE()
+);

@@ -42,10 +42,19 @@ namespace WinFormsApp1
             {"Гастрономическая", 2500},
             {"Историческая", 1800}
         };
-
-        public ChoisHotelForm()
+        string _transportType;
+        string _fromCity;
+        string _toCity;
+        decimal _transportPrice;
+        DateTime _departureTime;
+        public ChoisHotelForm(string transportType, string fromCity, string toCity, decimal price, DateTime departureTime)
         {
             InitializeComponent();
+            _transportType = transportType;
+            _fromCity = fromCity;
+            _toCity = toCity;
+            _transportPrice = price;
+            _departureTime = departureTime;
             dbConnection.OpenConnection();
             // Инициализация ComboBox для звёзд
             starComboBox.Items.AddRange(new object[] { 3, 4, 5 });
@@ -125,18 +134,67 @@ namespace WinFormsApp1
                 return;
             }
 
-            var booking = _builder.Build();
-
             try
             {
-                bdManager.SaveBooking(booking);
-                MessageBox.Show("Бронирование сохранено в базе данных!", "Успех",
+                // Сохраняем бронирование отеля в БД
+                bdManager.SaveBooking(_builder.Build());
+
+                // Сохраняем всю информацию в файл
+                SaveToFile();
+
+                MessageBox.Show("Бронирование сохранено!", "Успех",
                                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при сохранении: {ex.Message}", "Ошибка",
                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void SaveToFile()
+        {
+            string fileName = $"Booking_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), fileName);
+
+            using (StreamWriter writer = new StreamWriter(path))
+            {
+                writer.WriteLine("=== ПОЛНАЯ ИНФОРМАЦИЯ О БРОНИРОВАНИИ ===");
+
+                // Данные клиента
+                writer.WriteLine("\n--- ДАННЫЕ КЛИЕНТА ---");
+                writer.WriteLine(GetClientInfo());
+
+                // Данные транспорта
+                writer.WriteLine("\n--- ТРАНСПОРТ ---");
+                writer.WriteLine($"Тип: {_transportType}");
+                writer.WriteLine($"Маршрут: {_fromCity} → {_toCity}");
+                writer.WriteLine($"Цена: {_transportPrice} руб.");
+                writer.WriteLine($"Дата: {_departureTime:dd.MM.yyyy}");
+
+                // Данные отеля
+                writer.WriteLine("\n--- ОТЕЛЬ ---");
+                writer.WriteLine(_builder.Build().ToString());
+            }
+        }
+        private string GetClientInfo()
+        {
+            try
+            {
+                // Получаем ID последнего клиента
+                int clientId = bdManager.GetCurrentClientId();
+
+                if (clientId <= 0)
+                {
+                    return "Информация о клиенте не найдена";
+                }
+
+                // Используем существующий метод из BdManager
+                return bdManager.GetClientInfo(clientId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при получении данных клиента: {ex.Message}");
+                return "Ошибка при получении данных клиента";
             }
         }
     }
