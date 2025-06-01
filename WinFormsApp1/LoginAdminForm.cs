@@ -32,8 +32,9 @@ namespace WinFormsApp1
             {
                 MessageBox.Show("Успешный вход.");
                 dbConnection.CloseConnection();
-                AdminWorkFoem adminWorkFoem = new AdminWorkFoem();
-                adminWorkFoem.ShowDialog();
+                this.Close();
+                AdminWorkForm adminWorkFoem = new AdminWorkForm();
+                adminWorkFoem.Show();
             }
             else
             {
@@ -55,7 +56,8 @@ namespace WinFormsApp1
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
-            dbConnection.CloseConnection();
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
         }
     }
 }

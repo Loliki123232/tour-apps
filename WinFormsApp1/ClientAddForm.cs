@@ -32,7 +32,9 @@ namespace WinFormsApp1
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
-            dbConnection.CloseConnection();
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            
         }
         private void SaveInfoButton_Click(object sender, EventArgs e)
         {
@@ -73,9 +75,9 @@ namespace WinFormsApp1
          ValidUntilTextBox.Text,       // ValidUntil
          ccvcode                // CCVCod (уже проверено)
      );
-            
+            this.Close();
             ChoosingеTransportForm choosingеTransportForm = new ChoosingеTransportForm();
-            choosingеTransportForm.ShowDialog();
+            choosingеTransportForm.Show();
             dbConnection.CloseConnection();
         }
 

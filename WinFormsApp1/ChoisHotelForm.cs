@@ -122,7 +122,27 @@ namespace WinFormsApp1
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
-            dbConnection.CloseConnection();
+            if (_transportType == "Plane")
+            {
+                AirPlaneFlightsForm airPlaneFlightsForm = new AirPlaneFlightsForm();
+                airPlaneFlightsForm.Show();
+            }
+            if (_transportType == "Bus")
+            {
+                BusFlightsForm busFlightsForm = new BusFlightsForm();
+                busFlightsForm.Show();
+            }
+            if (_transportType == "Ship")
+            {
+                ShipFlightsForm shipFlightsForm = new ShipFlightsForm();
+                shipFlightsForm.Show();
+            }
+            if (_transportType == "Train")
+            {
+                TrainFlightsForm trainFlightsForm = new TrainFlightsForm();
+                trainFlightsForm.Show();
+            }
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)

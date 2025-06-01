@@ -98,7 +98,7 @@
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(250, 27);
             dateTimePicker1.TabIndex = 2;
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged_1;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // btnSave
             // 

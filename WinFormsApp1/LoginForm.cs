@@ -27,12 +27,6 @@ namespace WinFormsApp1
             InitializeComponent();
             dbConnection.OpenConnection();
         }
-
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            dbConnection.CloseConnection();
-        }
         private bool IsValidEmail(string email)
         {
 
@@ -72,8 +66,9 @@ namespace WinFormsApp1
             {
                 MessageBox.Show("Успешный вход.");
                 dbConnection.CloseConnection();
+                this.Hide();
                 ClientAddForm clientAddForm = new ClientAddForm();
-                clientAddForm.ShowDialog();
+                clientAddForm.Show();
             }
             else
             {
@@ -96,9 +91,10 @@ namespace WinFormsApp1
 
         private void AdminButton_Click(object sender, EventArgs e)
         {
+            this.Hide(); 
             LoginAdminForm loginAdminForm = new LoginAdminForm();
-            loginAdminForm.ShowDialog();
-            dbConnection.CloseConnection();
+            loginAdminForm.Show(); 
+            
         }
     }
 }

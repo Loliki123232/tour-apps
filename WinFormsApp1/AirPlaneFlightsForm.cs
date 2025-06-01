@@ -7,6 +7,8 @@ namespace WinFormsApp1
     {
         DatabaseConnection dbConnection = DatabaseConnection.Instance;
         BdManager bdManager = new BdManager();
+        private List<DateTime> allowedDates = new List<DateTime>();
+        private Random random = new Random();
         string city1;
         string city2;
         int price;
@@ -15,16 +17,30 @@ namespace WinFormsApp1
         {
             InitializeComponent();
             dateTimePicker1.MinDate = DateTime.Today;
+            GenerateRandomAllowedDates(10); // Генерируем 10 случайных дат
             dbConnection.OpenConnection();
+        }
+        private void GenerateRandomAllowedDates(int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                allowedDates.Add(DateTime.Today.AddDays(random.Next(1, 365))); 
+            }
+            allowedDates = allowedDates.Distinct().OrderBy(d => d).ToList(); 
         }
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            DateTime selectedDate = dateTimePicker1.Value;
+            DateTime selectedDate = dateTimePicker1.Value.Date; 
 
-            if (selectedDate < DateTime.Today)
+            if (!allowedDates.Contains(selectedDate))
             {
-                MessageBox.Show("Нельзя выбрать прошедшую дату!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dateTimePicker1.Value = DateTime.Today; // Сброс на текущую дату
+                
+                DateTime nearestDate = allowedDates
+                    .OrderBy(d => Math.Abs((d - selectedDate).Ticks))
+                    .First();
+
+                MessageBox.Show($"Вы можете выбрать только определённые даты. Ближайшая доступная: {nearestDate:d}");
+                dateTimePicker1.Value = nearestDate;
             }
         }
 
@@ -40,7 +56,8 @@ namespace WinFormsApp1
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
-            dbConnection.CloseConnection();
+            ChoosingеTransportForm choosingеTransportForm = new ChoosingеTransportForm();
+            choosingеTransportForm.Show();
         }
 
         private async void btnCheck_Click(object sender, EventArgs e)
@@ -83,15 +100,15 @@ namespace WinFormsApp1
                 price,
                 dateTimePicker1.Value
                 );
-
+            this.Close();
             ChoisHotelForm hotelForm = new ChoisHotelForm(
          "Plane",       // Тип транспорта
-         City1textBox.Text,    // Город отправления
-         City2textBox.Text,      // Город назначения
+         city1,    // Город отправления
+         city2,      // Город назначения
          price,       // Стоимость
          dateTimePicker1.Value // Дата отправления
      );
-            hotelForm.ShowDialog();
+            hotelForm.Show();
             dbConnection.CloseConnection();
         }
     }

@@ -6,11 +6,11 @@ using System.Windows.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class AdminWorkFoem : Form
+    public partial class AdminWorkForm : Form
     {
         private BdManager bdManager = new BdManager();
 
-        public AdminWorkFoem()
+        public AdminWorkForm()
         {
             InitializeComponent();
             LoadData();
@@ -169,29 +169,26 @@ namespace WinFormsApp1
         {
             try
             {
+                
                 using (StreamWriter writer = new StreamWriter(fileName, false, Encoding.UTF8))
                 {
-                    // Заголовки
-                    for (int i = 0; i < dataGridView.Columns.Count; i++)
-                    {
-                        writer.Write(dataGridView.Columns[i].HeaderText);
-                        if (i < dataGridView.Columns.Count - 1) writer.Write(",");
-                    }
-                    writer.WriteLine();
+                    // Заголовки (первая строка)
+                    var headers = dataGridView.Columns
+                        .Cast<DataGridViewColumn>()
+                        .Select(column => EscapeCsvValue(column.HeaderText));
+
+                    writer.WriteLine(string.Join(",", headers));
 
                     // Данные
-                    for (int i = 0; i < dataGridView.Rows.Count; i++)
+                    foreach (DataGridViewRow row in dataGridView.Rows)
                     {
-                        if (!dataGridView.Rows[i].IsNewRow)
+                        if (!row.IsNewRow)
                         {
-                            for (int j = 0; j < dataGridView.Columns.Count; j++)
-                            {
-                                string value = dataGridView.Rows[i].Cells[j].Value?.ToString() ?? "";
-                                if (value.Contains(",")) value = $"\"{value}\"";
-                                writer.Write(value);
-                                if (j < dataGridView.Columns.Count - 1) writer.Write(",");
-                            }
-                            writer.WriteLine();
+                            var cells = row.Cells
+                                .Cast<DataGridViewCell>()
+                                .Select(cell => EscapeCsvValue(cell.Value?.ToString() ?? ""));
+
+                            writer.WriteLine(string.Join(",", cells));
                         }
                     }
                 }
@@ -204,6 +201,26 @@ namespace WinFormsApp1
                 MessageBox.Show($"Ошибка при экспорте: {ex.Message}", "Ошибка",
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private string EscapeCsvValue(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return "";
+
+            // Если значение содержит запятые, кавычки или переносы строк - обрамляем в кавычки
+            if (value.Contains(",") || value.Contains("\"") || value.Contains("\r") || value.Contains("\n"))
+            {
+                // Экранируем кавычки внутри значения (удваиваем их)
+                return $"\"{value.Replace("\"", "\"\"")}\"";
+            }
+
+            return value;
+        }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            LoginAdminForm loginAdminForm = new LoginAdminForm();
+            loginAdminForm.Show();
         }
     }
 }

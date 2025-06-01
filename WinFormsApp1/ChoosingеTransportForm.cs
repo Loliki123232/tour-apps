@@ -20,30 +20,37 @@ namespace WinFormsApp1
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
+            ClientAddForm clientAddForm = new ClientAddForm();
+            clientAddForm.Show();
         }
 
         private void AirPlaneButton_Click(object sender, EventArgs e)
         {
+            this.Close();
             AirPlaneFlightsForm airPlaneFlightsForm = new AirPlaneFlightsForm();
-            airPlaneFlightsForm.ShowDialog();
+            airPlaneFlightsForm.Show();
         }
 
         private void TrainButton_Click(object sender, EventArgs e)
         {
+            this.Close();
             TrainFlightsForm trainFlightsForm = new TrainFlightsForm();
-            trainFlightsForm.ShowDialog();
+            trainFlightsForm.Show();
         }
 
         private void BusButton_Click(object sender, EventArgs e)
         {
+            this.Close();
             BusFlightsForm busFlightsForm = new BusFlightsForm();
-            busFlightsForm.ShowDialog();
+            busFlightsForm.Show();
         }
 
         private void ShipButton_Click(object sender, EventArgs e)
         {
+            this.Close();
             ShipFlightsForm shipFlightsForm = new ShipFlightsForm();
-            shipFlightsForm.ShowDialog();
+            shipFlightsForm.Show();
+            
         }
     }
 }

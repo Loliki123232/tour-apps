@@ -32,7 +32,6 @@
             PasswordLable = new Label();
             EmailTextBox = new TextBox();
             PasswordTextBox = new TextBox();
-            ExitButton = new Button();
             SignInButton = new Button();
             SignUpButton = new Button();
             AdminButton = new Button();
@@ -72,19 +71,9 @@
             PasswordTextBox.Size = new Size(365, 27);
             PasswordTextBox.TabIndex = 3;
             // 
-            // ExitButton
-            // 
-            ExitButton.Location = new Point(36, 340);
-            ExitButton.Name = "ExitButton";
-            ExitButton.Size = new Size(94, 29);
-            ExitButton.TabIndex = 4;
-            ExitButton.Text = "назад";
-            ExitButton.UseVisualStyleBackColor = true;
-            ExitButton.Click += ExitButton_Click;
-            // 
             // SignInButton
             // 
-            SignInButton.Location = new Point(155, 340);
+            SignInButton.Location = new Point(32, 340);
             SignInButton.Name = "SignInButton";
             SignInButton.Size = new Size(94, 29);
             SignInButton.TabIndex = 4;
@@ -132,7 +121,6 @@
             Controls.Add(AdminButton);
             Controls.Add(SignUpButton);
             Controls.Add(SignInButton);
-            Controls.Add(ExitButton);
             Controls.Add(PasswordTextBox);
             Controls.Add(EmailTextBox);
             Controls.Add(PasswordLable);
@@ -149,7 +137,6 @@
         private Label PasswordLable;
         private TextBox EmailTextBox;
         private TextBox PasswordTextBox;
-        private Button ExitButton;
         private Button SignInButton;
         private Button SignUpButton;
         private Button AdminButton;
